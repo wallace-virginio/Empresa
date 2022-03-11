@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Edição do Cargo</h5>
+    <form>
+      <div class="mb-3">
+        <label class="form-label">Atribuição do cargo</label>
+        <input type="text" class="form-control" [(ngModel)]="cargo.car_atribuicao" name="car_atribuicao">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Nome do cargo</label>
+        <input type="text" class="form-control" [(ngModel)]="cargo.car_nome"    name="car_nome">
+      </div>
+      <button (click)="editarCargo()"  class="btn btn-primary ">Alterar</button>
+      <button routerLink="/cargo" class="btn btn-secondary mx-3">Cancelar</button>
+    </form>
+
+  </div>
+</div>

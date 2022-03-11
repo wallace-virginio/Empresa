@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Turmas</h5>
+    <button routerLink="/cadastroCargo" class="btn btn-outline-danger">Cadastrar Cargo</button>
+    <div style="height: 300px; overflow: auto;">
+      <hr>
+    <table class="table">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nome do Cargo</th>
+          <th scope="col">Atribuição Cargo </th>
+          <th scope="col">Funcionarios</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cargo of cargos">
+          <th scope="row">{{cargo.id_cargo}}</th>
+          <td>{{cargo.car_nome}}</td>
+          <td>{{cargo.car_atribuicao}}</td>
+          <td><i routerLink="/funcionarioCargo/{{cargo.id_cargo}}"  class="bi bi-person-square"  ></i></td>
+          <td><i routerLink="/edicaoCargo/{{cargo.id_cargo}}" class="bi bi-pencil-square" ></i>
+              <i routerLink="/exclusaoCargo/{{cargo.id_cargo}}" class="bi bi-trash3 text-danger mx-2" ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
