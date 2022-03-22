@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Lista De Supervisores</h5>
+    <button type="button" routerLink="/cadastroFuncionario/"  class="btn btn-outline-danger">Cadastrar Funcionario</button>
+    <div style="height: 300px; overflow: auto;  ">
+      <hr>
+    <table class="table">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nome Do Supervisor</th>
+          <th scope="col">Email</th>
+          <th scope="col">Cargo Do Supervisor</th>
+          <th scope="col">Função Do Supervisor</th>
+          <th scope="col">Atribuir Cargo</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let supervisor of supervisores">
+          <th scope="row">{{supervisor.id_supervisor}}</th>
+          <td>{{supervisor.super_nome}}</td>
+          <td>{{supervisor.super_email}}</td>
+          <td>{{supervisor.car_nome}}</td>
+          <td>{{supervisor.car_atribuicao}}</td>
+          <td><i routerLink="/supervisor/atribuirCargo/{{supervisor.id_supervisor}}/{{supervisor.id_cargo}}" class="bi bi-briefcase-fill"></i></td>
+          <td><i  class="bi bi-pencil-square" routerLink="/edicaoSupervisor/" ></i>
+              <i routerLink="/funcionarioExclusao/" class="fas fa-trash-alt text-danger mx-2" ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-7">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Dados do Funcionario</h5>
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Nome do Funcionario</label>
+              <input type="text" [(ngModel)]="funcionario.func_nome" readonly class="form-control" name="func_nome">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Cidade do Funcionario</label>
+              <input type="text" readonly  [(ngModel)]="funcionario.func_cidade" class="form-control"  name="func_cidade">
+            </div>
+            <button  routerLink="/funcionarioComCargo" class="btn btn-secondary mx-3">Cancelar</button>
+          </form>
+          <hr>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="card">
+        <h5 class="card-title mx-3">Cargo do Funcionario: {{cargoEscolhido.id_cargo}}  </h5>
+        <div class="card-body">
+
+          <div class="mb-3">
+            <label class="form-label">Nome do Cargo</label>
+            <input type="text" readonly class="form-control" [(ngModel)]="cargoEscolhido.car_nome"  name="car_nome">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Descrição do Cargo</label>
+            <input type="text"readonly class="form-control"  [(ngModel)]="cargoEscolhido.car_atribuicao"   name="car_atribuicao">
+          </div>
+          <hr>
+          <h5 class="card-title"> Escolha novo Cargo para o Funcionario:</h5>
+
+          <hr>
+          <select [(ngModel)]="cargoEscolhido" name="cargoEscolhido" (ngModelChange)="buscarCargo()"  name="cargoEscolhido"  >
+            <option *ngFor="let cargo of cargos" [ngValue]="cargo" >
+              {{cargo.car_nome}} - {{cargo.car_atribuicao}}
+            </option>
+          </select>
+          <button (click)="atribuirCargo()" class="btn btn-primary mx-3">Salvar</button>
+          <hr>
+          <div class="card">
+            <h5 class="card-title">Deixar Funcionario sem cargo?
+              <button (click)="deixarFuncionarioSemCargo()" class="btn btn-secondary mx-3">Confirmar</button>
+            </h5>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

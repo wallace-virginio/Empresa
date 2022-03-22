@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Funcionarios</h5>
+    <hr />
+
+    <button routerLink="cadastroFuncionario/" class="btn btn-outline-danger">Cadastrar Funcionario</button>
+    <hr>
+
+    <div style="height: 400px; overflow: auto">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Nome do Funcionario</th>
+            <th scope="col">Cidade do Funcionario</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Atribuir Cargo</th>
+            <th scope="col">Bonificação</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let funcionario of funcionarios">
+            <th scope="row">{{funcionario.id_Funcionario}}</th>
+            <td>{{funcionario.func_nome}}</td>
+            <td>{{funcionario.func_cidade}}</td>
+            <td>{{funcionario.car_nome}}</td>
+            <td><i class="bi bi-briefcase-fill" routerLink="/funcionario/atribuirCargo/{{funcionario.id_Funcionario}}/{{funcionario.id_cargo}}"></i></td>
+            <td><i class="fa-solid fa-coins" routerLink="bonificacao/listaPorFuncionario/{{funcionarios.id_Funcionario}}"></i></td>
+            <td>
+              <i routerLink="edicaoFuncionario/{{funcionario.id_Funcionario}}/" class="fas fa-edit text-info"></i>
+              <i routerLink="exclusaoFuncionario/{{funcionario.id_Funcionario}}/" class="fas fa-trash-alt text-danger mx-2"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

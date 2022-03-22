@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Funcionarios </h5>
+    <button type="button" (click)="chamarFormularioCadastro()"  class="btn btn-outline-danger">Cadastrar Funcionario</button>
+    <div style="height: 300px; overflow: auto;  ">
+      <hr>
+    <table class="table">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nome Do Funcionario</th>
+          <th scope="col">Cidade do Funcionario</th>
+          <th scope="col">Buttons</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let funcionario of funcionarios">
+          <th scope="row">{{funcionario.id_Funcionario}}</th>
+          <td>{{funcionario.func_nome}}</td>
+          <td>{{funcionario.func_cidade}}</td>
+          <td><i  class="bi bi-pencil-square" routerLink="/edicaoFuncionario/{{funcionario.id_Funcionario}}" ></i>
+              <i routerLink="/funcionarioExclusao/" class="fas fa-trash-alt text-danger mx-2" ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>

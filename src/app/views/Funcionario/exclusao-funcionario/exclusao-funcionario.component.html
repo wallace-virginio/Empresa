@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Excluir Funcionario</h5>
+    <form>
+      <div class="mb-3">
+        <label class="form-label">Nome do Funcionario</label>
+        <input type="text" class="form-control"  [(ngModel)]="Funcionario.func_nome" readonly name="func_nome">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Cidade do Funcionario</label>
+        <input type="text" class="form-control" readonly [(ngModel)]="Funcionario.func_cidade"   name="car_nome">
+      </div>
+      <button (click)="excluirFuncionario()"  class="btn btn-primary ">Excluir</button>
+      <button routerLink="/cargo" class="btn btn-secondary mx-3">Voltar</button>
+    </form>
+
+  </div>
+</div>
