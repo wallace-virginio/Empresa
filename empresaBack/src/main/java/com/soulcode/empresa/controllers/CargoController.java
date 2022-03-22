@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.soulcode.empresa.models.Cargo;
+import com.soulcode.empresa.models.Supervisor;
 import com.soulcode.empresa.services.CargoService;
+
 
 @CrossOrigin
 @RestController
@@ -49,18 +51,30 @@ public class CargoController {
 		
 		return ResponseEntity.created(uri).build();
 	}
+	@GetMapping("/cargo/cargo-supervisor")
+	public List<List> cargocomSupervisor(){
+		List<List> cargoSupervisor = cargoService.cargoComSeuSupervisor();
+		return cargoSupervisor;
+	}
 	
 	@PutMapping("cargo/{id_cargo}")
-	public ResponseEntity<Cargo> editarcargo(@PathVariable Integer id_cargo, @RequestBody Cargo cargo){
+	public ResponseEntity<Cargo> editarCargo(@PathVariable Integer id_cargo, @RequestBody Cargo cargo){
 		cargo.setId_cargo(id_cargo);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@DeleteMapping("/cargo/{id_cargo}")
-	public ResponseEntity<Void> deletarUmcargo(@PathVariable Integer id_cargo){
+	public ResponseEntity<Void> deletarUmCargo(@PathVariable Integer id_cargo){
 		cargoService.deletarUmcargo(id_cargo);
 		return ResponseEntity.noContent().build();
 	}
+	
+	@PutMapping("/cargo/definirSupervisor/{id_cargo}/{id_supervisor}")
+	public ResponseEntity<Supervisor> atribuirSupervisor(@PathVariable Integer id_cargo, @PathVariable Integer id_supervisor){
+		cargoService.atribuirSupervisor(id_cargo, id_supervisor);
+		return ResponseEntity.noContent().build();
+	}
+	
 	
 	
 }

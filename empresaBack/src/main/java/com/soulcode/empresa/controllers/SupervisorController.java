@@ -42,7 +42,7 @@ public class SupervisorController {
 	}
 
 	@GetMapping("/supervisor-cargo/{id_cargo}")
-	public ResponseEntity<Supervisor> buscarProfessorDoCargo(@PathVariable Integer id_cargo) {
+	public ResponseEntity<Supervisor> buscarSupervisorDoCargo(@PathVariable Integer id_cargo) {
 		Supervisor supervisor = supervisorService.buscarSupervisorDoCargo(id_cargo);
 		return ResponseEntity.ok().body(supervisor);
 	}
@@ -88,6 +88,6 @@ public class SupervisorController {
 		return ResponseEntity.noContent().build();
 	}
 
-	// -------------- INICIO DO METODO DE EDITAR --------------\\
+	// -------------- FIM DO METODO DE EDITAR --------------\\
 
 }

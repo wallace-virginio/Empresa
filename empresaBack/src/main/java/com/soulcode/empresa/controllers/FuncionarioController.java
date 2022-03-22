@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.soulcode.empresa.models.Cargo;
 import com.soulcode.empresa.models.Funcionario;
 import com.soulcode.empresa.repositorys.FuncionarioRepository;
 import com.soulcode.empresa.services.FuncionarioService;
@@ -45,7 +46,7 @@ public class FuncionarioController {
 	}
 
 	// anotação com a rota em que conseguiremos acessar as infos desse Funcionario
-	@GetMapping("/funcionarios/{id_funcionario}")
+	@GetMapping("/funcionarios/{id_Funcionario}")
 	// como é apenas um Funcionario específico o tipo de retorno é ResponseEntity
 	// ResponseEntity retorna os dados reais de um registro do BD, retorna uma
 	// resposta inteira - incluindo cabeçalho, corpo e status
@@ -58,13 +59,13 @@ public class FuncionarioController {
 		return ResponseEntity.ok().body(Funcionarios);
 	}
 	
-	@GetMapping("/funcionario/busca-funcionario/{id_cargo}")
+	@GetMapping("/funcionario/busca-cargo/{id_cargo}")
 	public List<Funcionario> buscarFuncionarioCargo(@PathVariable Integer id_cargo){
 		List<Funcionario> funcionario = FuncionarioService.buscarFuncionarioCargo(id_cargo);
 		return funcionario;
 }
 	
-	@PutMapping("/funcionarios/{id_funcionario}")
+	@PutMapping("/funcionarios/{id_Funcionario}")
 	public ResponseEntity<Void> editarFuncionario(@PathVariable Integer id_Funcionario, @RequestBody Funcionario Funcionarios){
 		Funcionarios.setId_Funcionario(id_Funcionario);
 		Funcionarios = FuncionarioService.editarFuncionario(Funcionarios);
@@ -79,5 +80,23 @@ public class FuncionarioController {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/funcionario/{id}")
 				.buildAndExpand(Funcionario.getId_Funcionario()).toUri();
 		return ResponseEntity.created(uri).build();
+	}
+	
+	@PutMapping("/funcionario/inserirCargo/{id_Funcionario}")
+	public ResponseEntity<Funcionario> inserirFuncionarioNoCargo(@PathVariable Integer id_Funcionario, @RequestBody Cargo cargo){
+		Funcionario funcionario = FuncionarioService.inserirFuncionarioNoCargo(id_Funcionario, cargo);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@PutMapping("/funcionario/deixarSemCargo/{id_Funcionario}")
+	public ResponseEntity<Funcionario> deixarFuncionarioSemCargo(@PathVariable Integer id_Funcionario){
+		Funcionario funcionario = FuncionarioService.deixarFuncionarioSemCargo(id_Funcionario);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@DeleteMapping("/funcionarios/{id_Funcionario}")
+	public ResponseEntity<Void> deletarUmFuncionario(@PathVariable Integer id_Funcionario){
+		FuncionarioService.deleteFuncionario(id_Funcionario);
+		return ResponseEntity.noContent().build();
 	}
 }

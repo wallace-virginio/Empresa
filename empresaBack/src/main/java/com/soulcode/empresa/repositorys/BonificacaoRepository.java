@@ -10,6 +10,6 @@ import com.soulcode.empresa.models.Bonificacao;
 
 public interface BonificacaoRepository extends JpaRepository<Bonificacao, Integer> {
 
-	@Query(value = "SELECT * FROM empresa.bonificacao WHERE id_funcionario = :id_funcionario", nativeQuery = true)
+	@Query(value = "SELECT * FROM empresa.bonificacao WHERE id_funcionario= id_funcionario", nativeQuery = true)
 	List<Bonificacao> buscarBonificacaoDoFuncionario(Integer id_funcionario);
 }

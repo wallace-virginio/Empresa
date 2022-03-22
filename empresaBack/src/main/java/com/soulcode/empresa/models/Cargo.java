@@ -20,10 +20,10 @@ public class Cargo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_cargo;
 
-	@Column(nullable = false, length = 10)
+	@Column(nullable = false, length = 50)
 	private String car_nome;
 
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false, length = 50)
 	private String car_atribuicao;
 
 	@OneToMany(mappedBy = "cargo")

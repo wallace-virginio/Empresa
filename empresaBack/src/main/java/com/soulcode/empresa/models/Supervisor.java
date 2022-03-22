@@ -23,6 +23,9 @@ public class Supervisor {
 
 	@Column(nullable = true, length = 80)
 	private String super_funcao;
+	
+	@Column(nullable = true, length = 80)
+	private String super_email;
 
 	@Column(nullable = true)
 	private String super_foto;
@@ -70,6 +73,22 @@ public class Supervisor {
 
 	public void setCargo(Cargo cargo) {
 		this.cargo = cargo;
+	}
+
+	public String getSuper_funcao() {
+		return super_funcao;
+	}
+
+	public void setSuper_funcao(String super_funcao) {
+		this.super_funcao = super_funcao;
+	}
+
+	public String getSuper_email() {
+		return super_email;
+	}
+
+	public void setSuper_email(String super_email) {
+		this.super_email = super_email;
 	}
 
 }

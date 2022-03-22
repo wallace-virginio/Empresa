@@ -33,7 +33,7 @@ public class BonificacaoController {
 		return bonificacao;
 	}
 
-	@GetMapping("/aluno/boleto/{codigo}")
+	@GetMapping("/funcionario/bonificacao/{codigo}")
 	public ResponseEntity<Bonificacao> buscarUmaBonificacao(@PathVariable Integer codigo) {
 		Bonificacao bonificacao = bonificacaoService.buscarUmaBonificacao(codigo);
 		return ResponseEntity.ok().body(bonificacao);
@@ -60,8 +60,8 @@ public class BonificacaoController {
 		return ResponseEntity.noContent().build();
 	}
 
-	@PutMapping("/aluno/cancelarBonificacao/{codigo}")
-	public ResponseEntity<Bonificacao> cancelarBoleto(@PathVariable Integer codigo) {
+	@PutMapping("/funcionario/cancelarBonificacao/{codigo}")
+	public ResponseEntity<Bonificacao> cancelarBonificacao(@PathVariable Integer codigo) {
 		bonificacaoService.cancelarBonificacao(codigo);
 		return ResponseEntity.noContent().build();
 	}
